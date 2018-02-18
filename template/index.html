@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Vue.js Template</title>
+</head>
+<body>
+	<div id="app">
+		{{ message }},
+    {{ message.split('').reverse().join('') }}
+    <p v-bind:id="uid">인스턴스의 값과 연결</p>
+    <a v-if="seen">seen 값에 따라 표시 여부 결정</a>
+    <ul v-for="item in items">{{ item.name }}</ul>
+    <button v-on:click="pAlert">클릭하면 경고창 표시</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue.js',
+				uid: 10,
+				seen: true,
+				items: ['galaxy, iphone, xperia, htc']
+			},
+			methods: {
+				pAlert: function() {
+					alert('hi');
+				}
+			}
+		});
+	</script>
+</body>
+</html>
