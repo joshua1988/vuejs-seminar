@@ -14,12 +14,64 @@
   </head>
   <body>
     <div id="app">
-      
+      <h1>Vue Todo</h1>
+      <div class="inputBox shadow">
+        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
+        <span class="addContainer" v-on:click="addTodo">
+          <i class="addBtn fas fa-plus" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="listBox">
+        <transition-group name="list" tag="ul">
+          <li v-for="(todoItem, index) in todoItems" v-bind:key="index" class="shadow">
+            {{ todoItem }}
+            <span class="removeBtn" type="button" v-on:click="removeTodo(todoItem, index)">
+              <i class="far fa-trash-alt"></i>
+            </span>
+          </li>
+        </transition-group>
+      </div>
+      <div class="footerBox">
+        <span class="clearAllBtn" v-on:click="removeAll">Clear All</span>   
+      </div>
     </div>
 
     <script>
       new Vue({
-        el: '#app'
+        el: '#app',
+        data: function() {
+          return {
+            newTodoItem: '',
+            todoItems: []
+          }
+        },
+        methods: {
+          addTodo: function() {
+            var inputText = this.newTodoItem.trim();
+            if (inputText !== '') {
+              localStorage.setItem(inputText, inputText);
+              this.todoItems.push(inputText);
+              this.newTodoItem = '';
+            } else {
+              alert('type sth');
+            }
+          },
+          removeTodo: function(item, index) {
+            localStorage.removeItem(item, item);
+            this.todoItems.splice(index, 1);
+          },
+          removeAll: function() {
+            localStorage.clear();
+            this.todoItems = [];
+          }
+        },
+        created: function() {
+          if (localStorage.length > 0) {
+            for (var i = 0; i < localStorage.length; i++) {
+              this.todoItems.push(localStorage.key(i));
+            }
+          }
+        }
       });
     </script>
   </body>
