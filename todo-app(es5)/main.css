@@ -1,0 +1,129 @@
+body {
+  text-align: center;
+  background-color: #F6F6F8;
+}
+
+input {
+  border-style: groove;
+  width: 200px;
+}
+
+button {
+  border-style: groove;
+}
+
+.shadow {
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03)
+}
+
+h1 {
+  color: #2F3B52;
+  font-weight: 900;
+  margin: 2.5rem 0 1.5rem;
+}
+
+/* Input Component */
+
+input:focus {
+  outline: none;
+}
+
+.inputBox {
+  background: white;
+  border-radius: 5px;
+}
+
+.inputBox input {
+  border-style: none;
+  font-size: 0.9rem;
+  height: 50px;
+  line-height: 50px;
+}
+
+.addContainer {
+  float: right;
+  background: linear-gradient(to right, #6478FB, #8763FB);
+  display: block;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+  height: 50px;
+  line-height: 50px;
+}
+
+.addBtn {
+  color: white;
+  vertical-align: middle;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* List Component */
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-top: 0;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  min-height: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0.5rem 0;
+  padding: 0 0.9rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.checkBtn {
+  line-height: 45px;
+  color: #62acde;
+  margin-right: 5px;
+}
+
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.fa-trash-alt {
+  line-height: 50px;
+}
+
+.footerBox {
+  width: 8.5rem;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.clearAllBtn {
+  color: #e20303;
+  display: block;
+}
+
+/* Modal Component */
+
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-move {
+  transition: transform 1s;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
