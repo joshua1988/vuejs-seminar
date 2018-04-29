@@ -1,0 +1,24 @@
+<script src="./node_modules/vue/dist/vue.js"></script>
+
+<!-- 템플릿 예시 -->
+<div id="app">
+  <example :tags="['h1', 'h2', 'h3']"></example>
+</div>
+
+<!-- 결과 템플릿 -->
+<div>
+  <h1>0</h1>
+  <h2>1</h2>
+  <h3>2</h3>
+</div>
+
+<script>
+  Vue.component('example', {
+    // TODO #2 - 위 템플릿 예시를 결과 템플릿으로 변환하는 render 함수를 구현해보세요.
+    
+  })
+
+  new Vue({ el: '#app' })
+</script>
+
+<!-- 참고 문서 https://vuejs.org/v2/guide/render-function.html#createElement-Arguments -->

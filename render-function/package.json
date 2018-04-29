@@ -1,0 +1,13 @@
+{
+  "name": "render-function-examples",
+  "version": "1.0.0",
+  "author": "Captain Pangyo",
+  "scripts": {
+    "test": "jest --env node"
+  },
+  "dependencies": {
+    "jest": "^22.4.3",
+    "jsdom": "^11.9.0",
+    "vue": "^2.5.16"
+  }
+}

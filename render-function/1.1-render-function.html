@@ -1,0 +1,27 @@
+<script src="./node_modules/vue/dist/vue.js"></script>
+<style>
+  #welcome.red {
+    color: red;
+  }
+</style>
+
+<!-- 템플릿 예시 -->
+<div id="app">
+  <h1 id="welcome" :class="{ red: isRed }">{{ msg }}</h1>
+  <button @click="isRed = !isRed">toggle red</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isRed: true,
+      msg: 'This should be red'
+    },
+    // TODO #1 - 위 템플릿 예시와 같은 결과가 나타날 수 있게 render 함수를 구현해보세요.
+    render(h) {
+      
+    }
+  })
+</script>
+<!-- 참고 문서 https://vuejs.org/v2/guide/render-function.html#createElement-Arguments -->
