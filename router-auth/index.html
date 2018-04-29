@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Router with Auth</title>
+  </head>
+  <body>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+      var auth = {
+        signIn() {
+          localStorage.setItem('auth', 'true');
+        },
+        logOut() {
+          localStorage.removeItem('auth');
+        },
+        loggedIn() {
+          return localStorage.getItem('auth') === 'true';
+        }
+      }
+
+      var Login = {
+        template: `
+          <form @submit.prevent="loginAccount">
+            <div>
+              <label for="inputId">ID : </label>
+              <input id="inputId" type="text" v-model="loginId">
+            </div>
+            <div>
+              <label for="inputPw">PW : </label>
+              <input id="inputPw" type="text" v-model="loginPw">
+            </div>
+            <div>
+              <button @click="loginAccount">Login</button>
+              <p>{{ authLogMessage }}</p>
+            </div>
+          </form>
+        `,
+        data() {
+          return {
+            loginId: '',
+            loginPw: '',
+            authLogMessage: ''
+          }
+        },
+        methods: {
+          loginAccount() {
+            if (this.loginId === 'test' && this.loginPw === '1234') {
+              auth.signIn();
+              this.$router.push('/main');
+            } else {
+              this.authLogMessage = '경고 : 아이디는 test 비번은 1234를 입력하세요.';
+              this.loginId = '';
+              this.loginPw = '';
+            }
+          }
+        }
+      };
+
+      var Main = {
+        template: `
+          <div>
+            <h1>Main Page</h1>
+            <ul>
+              <li>Angular</li>
+              <li>React</li>
+              <li>Vue</li>
+            </ul>
+            <button @click="logOut">logout</button>
+          </div>
+        `,
+        methods: {
+          logOut() {
+            auth.logOut();
+            this.$router.push('login');
+          }
+        }
+      };
+
+      function requireAuth(to, from, next) {
+        if (!auth.loggedIn()) {
+          next({
+            path: '/login',
+            query: { redirect: to.fullPath }
+          })
+        } else {
+          next()
+        }
+      }
+
+      var router = new VueRouter({
+        routes: [
+          { path: '/login', component: Login },
+          { path: '/main', component: Main, beforeEnter: requireAuth }
+	      ]
+      });
+
+      new Vue({
+        el: '#app',
+        router,
+        created() {
+          this.$router.push('login');
+        }
+      });
+    </script>
+  </body>
+</html>
