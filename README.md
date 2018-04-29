@@ -30,3 +30,12 @@ All the concepts and samples to understand how Vue.js works and how you can scal
 
 - [vuejs-beginners.pdf](https://github.com/joshua1988/vuejs-seminar/blob/master/slides/vuejs-beginners.pdf)
 - [vuejs-intermediate.pdf](https://github.com/joshua1988/vuejs-seminar/blob/master/slides/vuejs-intermediate.pdf)
+
+## References
+
+- [Vue Template Explorer](https://vue-template-explorer.now.sh/#%3Cdiv%20id%3D%22app%22%3E%7B%7B%20msg%20%7D%7D%3C%2Fdiv%3E)
+- [Vue Reactivity](https://vuejs.org/v2/guide/reactivity.html)
+- [How browser works - HTML5Rocks](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+- [브라우저는 어떻게 동작하는가? - 한글](http://d2.naver.com/helloworld/59361)
+- [구글 웹 기술 공식 문서](https://developers.google.com/web/fundamentals/)
+
