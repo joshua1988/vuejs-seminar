@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Instance</title>
+    <style>
+      button {
+        opacity: 0.65; 
+        cursor: not-allowed;
+      }
+      .active {
+        opacity: 1;
+        cursor: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <form @submit.prevent="submitForm">
+        <div>
+          <label for="name">Name: </label>
+          <input id="name" v-model="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email: </label>
+          <input id="email" v-model="email" type="text" required>
+        </div>
+        <button :class="[name ? activeClass : '']" type="submit">Submit</button>
+        <div>
+          <h3>Response from Server</h3>
+          <pre>{{ response }}</pre>
+        </div>
+      </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            name: '',
+            email: '',
+            activeClass: 'active',
+            response: ''
+          }
+        },
+        methods: {
+          submitForm() {
+            return axios.post('https://jsonplaceholder.typicode.com/posts', {
+              userId: 1,
+              name: this.name,
+              email: this.email
+            })
+            .then(response => this.response = JSON.stringify(response, null, 2))
+            .catch(error => this.response = 'Error: ' + error.response.status);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
