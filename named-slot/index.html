@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Named Slots</title>
+    <style>
+      ul {
+        padding: 0;
+      }
+      li {
+        list-style: none;
+        padding: 15px 10px;
+        margin: 5px 0;
+        width: 25%;
+        background-color: #f9ed69;
+      }
+      h2 {
+        margin: 0.7rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Recent posts</h1>
+      <ul>
+        <blog-post>
+          <p slot="content">The first post is pretty simple</p>
+          <small slot="date">2018.06.20</small>
+          <strong slot="author">John</strong>
+        </blog-post>
+        <blog-post>
+          <p slot="content">The second post is pretty much the same</p>
+          <small slot="date">2017.02.13</small>
+          <strong slot="author">Sarah</strong>
+        </blog-post>
+        <blog-post>
+          <p slot="content">The third post is quite straightforward</p>
+          <small slot="date">2015.11.17</small>
+          <strong slot="author">Tom</strong>
+        </blog-post>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script>
+      Vue.component('blog-post', {
+        template: `
+        <li>
+          <h3>Content:</h3>
+          <slot name="content"></slot>
+          <slot name="date"></slot>
+          <slot name="author"></slot>
+        </li>
+        `
+      });
+
+      new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>
