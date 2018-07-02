@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js Component</title>
+</head>
+
+<body>
+  <div id="app">
+    <header-component></header-component>
+    <footer-component></footer-component>
+  </div>
+
+  <script type="text/x-template" id="header-component-template">
+    <div>
+      <p>This is header component</p>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="footer-component-template">
+    <div>
+      <p>This is footer component</p>
+    </div>
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script>
+    var headerComponent = {
+      template: '#header-component-template'
+    };
+
+    var footerComponent = {
+      template: '#footer-component-template'
+    };
+
+    new Vue({
+      el: '#app',
+      components: {
+        'header-component': headerComponent,
+        'footer-component': footerComponent
+      }
+    });
+  </script>
+</body>
+
+</html>
